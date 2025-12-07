@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misiones 2025 - Parroquia San Francisco</title>
+
+    <!-- Fuentes y Iconos -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. VARIABLES Y COLORES (El ADN del Sitio)
+           ========================================= */
+        :root {
+            /* Paleta Institucional */
+            --cafe-primario: #8D6E63;
+            --cafe-oscuro: #5D4037;
+            --crema-fondo: #F9F9F9;
+            --blanco: #ffffff;
+
+            /* Paleta Campaña (Misiones) */
+            --mision-rojo: #C62828;
+            --mision-dorado: #FBC02D;
+            --whatsapp-verde: #25D366;
+
+            /* Utilidades */
+            --sombra-suave: 0 4px 10px rgba(0, 0, 0, 0.08);
+            --sombra-fuerte: 0 15px 30px rgba(0, 0, 0, 0.2);
+            --radio-borde: 12px;
+        }
+
+        /* =========================================
+           2. RESET Y BASE
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--crema-fondo);
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+        }
+
+        h1,
+        h2 {
+            color: var(--cafe-oscuro);
+        }
+
+        h3 {
+            color: var(--cafe-oscuro);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* =========================================
+           3. LAYOUT Y UTILIDADES
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .seccion {
+            padding: 80px 0;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--cafe-oscuro);
+        }
+
+        .subtitulo-seccion {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .align-left {
+            text-align: left;
+        }
+
+        /* Grid General */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .grid-2-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* =========================================
+           4. HEADER (Navegación) - CORREGIDO
+           ========================================= */
+        header {
+            background: var(--blanco);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .barra-nav {
+            display: flex;
+            justify-content: center;
+            /* Centrado ya que no hay menú */
+            align-items: center;
+            min-height: 70px;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--cafe-oscuro);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo img,
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* =========================================
+           6. TARJETAS GENERALES
+           ========================================= */
+        .card {
+            background: white;
+            padding: 0;
+            border-radius: var(--radio-borde);
+            box-shadow: var(--sombra-suave);
+            transition: transform 0.3s;
+            overflow: hidden;
+            border: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card h3 {
+            color: var(--cafe-primario);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .icono-tarjeta {
+            font-size: 2rem;
+            color: var(--cafe-primario);
+            float: right;
+            opacity: 0.2;
+        }
+
+        /* =========================================
+           7. FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--cafe-oscuro);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 80px 0 30px;
+            margin-top: 100px;
+            border-top: 6px solid var(--mision-dorado);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            color: var(--blanco);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--mision-dorado);
+            display: inline-block;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--mision-dorado);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: var(--mision-dorado);
+            color: var(--cafe-oscuro);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* =========================================
+           8. PÁGINA MISIONES
+           ========================================= */
+        .hero-mision {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background-color: var(--mision-rojo);
+            overflow: hidden;
+            margin-bottom: 60px;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(198, 40, 40, 0.7), rgba(93, 64, 55, 0.8));
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .hero-icon {
+            color: var(--mision-dorado);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: flotar 3s infinite ease-in-out;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--mision-dorado);
+            line-height: 1;
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .rounded-img {
+            border-radius: 12px;
+            box-shadow: var(--sombra-fuerte);
+            width: 100%;
+            height: auto;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            background-color: #FFFDE7;
+            border-radius: 20px;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--cafe-primario);
+            opacity: 0.2;
+            transform: translateX(-50%);
+        }
+
+        .timeline-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-row:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        .timeline-row:nth-child(even) {
+            text-align: left;
+        }
+
+        .timeline-img-box {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 50%;
+            padding: 0 40px;
+        }
+
+        .circle-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        /* CTA WhatsApp */
+        .cta-whatsapp-section {
+            margin-top: 80px;
+        }
+
+        .cta-content {
+            background-color: #E8F5E9;
+            border: 2px dashed #25D366;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-content h3 {
+            color: #1B5E20;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 50px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        /* =========================================
+           9. CARRUSEL
+           ========================================= */
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-track {
+            position: relative;
+            height: 500px;
+            background-color: #333;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 40px 30px 60px 30px;
+            text-align: left;
+        }
+
+        .carousel-caption h3 {
+            color: var(--mision-dorado);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-caption p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--mision-dorado);
+            color: var(--mision-rojo);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--mision-dorado);
+            transform: scale(1.3);
+        }
+
+        /* =========================================
+           10. MEJORA VISUAL DE IMÁGENES
+           ========================================= */
+        .circle-img,
+        .carousel-slide img,
+        .card img {
+            object-fit: cover;
+            filter: contrast(1.1) saturate(1.15) sepia(0.1);
+            transition: all 0.5s ease;
+        }
+
+        .hero-bg-img:hover,
+        .rounded-img:hover,
+        .circle-img:hover,
+        .carousel-slide img:hover,
+        .card img:hover {
+            filter: contrast(1) saturate(1) sepia(0);
+            transform: scale(1.03);
+        }
+
+        /* =========================================
+           11. GRID ZONAS
+           ========================================= */
+        .grid-zonas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .zona-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .zona-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-fuerte);
+            border-color: var(--mision-rojo);
+        }
+
+        .zona-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #FFEBEE;
+            color: var(--mision-rojo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: 0.3s;
+        }
+
+        .zona-card:hover .zona-icon {
+            background-color: var(--mision-rojo);
+            color: white;
+        }
+
+        .zona-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .zona-link {
+            font-size: 0.9rem;
+            color: #777;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .zona-card:hover .zona-link {
+            color: var(--mision-rojo);
+            font-weight: bold;
+        }
+
+        .zona-card.destacado .zona-icon {
+            background-color: #FFF8E1;
+            color: var(--mision-dorado);
+        }
+
+        .zona-card.destacado:hover {
+            border-color: var(--mision-dorado);
+        }
+
+        .zona-card.destacado:hover .zona-icon {
+            background-color: var(--mision-dorado);
+            color: white;
+        }
+
+        .zona-card.destacado:hover .zona-link {
+            color: #F9A825;
+        }
+
+        /* =========================================
+           12. RESPONSIVE
+           ========================================= */
+        @media (max-width: 900px) {
+            .barra-nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .logo {
+                margin-bottom: 5px;
+            }
+
+            .grid-2-cols {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-row,
+            .timeline-row:nth-child(odd) {
+                flex-direction: column;
+                text-align: left;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-img-box {
+                width: 100%;
+                justify-content: flex-start;
+                margin-bottom: 15px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                padding: 0;
+            }
+
+            .circle-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .carousel-track {
+                height: 350px;
+            }
+
+            .carousel-caption h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER SIMPLIFICADO -->
+    <header>
+        <nav class="container barra-nav">
+            <!-- Logo + Nombre -->
+            <a href="index.html" class="logo">
+                <img src="assets/img/logo_parroquia.png" alt="Logo Parroquia" class="logo-img">
+                <span>Parroquia San Francisco de Asís</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT (MISIONES) -->
+    <main class="container">
+
+        <!-- 1. HERO SECTION: EL PROPÓSITO -->
+        <div class="hero-mision">
+            <!-- Imagen de Fondo Placeholder -->
+            <img src="assets/img/pag_misiones/portada.webp" alt="Misiones Parroquiales" class="hero-bg-img">
+
+            <div class="hero-overlay">
+                <div class="container">
+                    <i class="fa-solid fa-star hero-icon"></i>
+                    <h1 class="hero-title">Misiones 2025</h1>
+                    <p class="hero-subtitle" style="font-size: 1.4rem; max-width: 900px;">
+                        "Llevar a los niños y niñas de las zonas la alegría de la navidad que es el nacimiento de JESÚS"
+                    </p>
+
+                    <!-- Datos Relevantes (Resumen) -->
+                    <div class="hero-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">60+</span>
+                            <span class="stat-label">Jóvenes Enviados</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">16</span>
+                            <span class="stat-label">Encuentros</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Lugares</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. DEFINICIÓN: QUÉ SON Y QUIÉNES VAN -->
+        <section class="seccion">
+            <div class="grid-2-cols">
+                <!-- Texto -->
+                <div>
+                    <h2 class="titulo-seccion align-left">¿Qué son las Misiones?</h2>
+                    <p style="margin-bottom: 20px;">
+                        Las Misiones Navideñas son el corazón de nuestro servicio parroquial. Durante las cuatro semanas
+                        de Adviento (las cuatro semanas antes de la Navidad), jóvenes de confirmación, catequistas y la
+                        comunidad parroquial salimos al encuentro y somos enviados a las zonas y capillas.
+                    </p>
+
+                    <div class="card"
+                        style="padding: 20px; border-left: 5px solid var(--mision-dorado); border-top: none;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;"><i class="fa-solid fa-star"
+                                style="color: var(--mision-rojo);"></i> Un solo propósito</h3>
+                        <p>"Preparar nuestros corazones mediante <strong>encuetros navideños</strong> y llevar a los
+                            niños, adolescentes y a las familias la alegría de la navidad, que es el nacimiento de
+                            Jesús."</p>
+                    </div>
+                </div>
+
+                <!-- Imagen Placeholder -->
+                <div>
+                    <img src="assets/img/pag_misiones/misioneros.webp" alt="Grupo de Misioneros" class="rounded-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LA ACTIVIDAD: ENCUENTROS NAVIDEÑOS -->
+        <section class="seccion" style="background-color: #FFFDE7; border-radius: 16px; padding: 60px 40px;">
+            <div class="center-text" style="text-align: center; margin-bottom: 40px;">
+                <h2 class="titulo-seccion">¡Encuentros Navideños!</h2>
+                <p class="subtitulo-seccion">
+                    Las misiones duran 4 a 5 semanas, y nos reunimos cuatro veces por semana (martes, jueves, sábado y
+                    domingo) para los encuentros que son de 2 horas. Encuentros llenos de:
+                </p>
+            </div>
+
+            <div class="grid">
+                <!-- Actividades -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fa-solid fa-shapes icono-tarjeta"></i>
+                        <h3>Dinámicas</h3>
+                        <p>Se realizan juegos, manualidades y villancicos</p>
+                    </div>
+                </div>
+
+                <!-- Temas -->
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fa-solid fa-book-bible icono-tarjeta"></i>
+                        <h3>Tema Central</h3>
+                        <p>Se abordan temas como: María, José, Estrella de Belén, Reyes Magos acompañado de un delicioso
+                            <strong>REFRIGERIO</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Esenciales -->
+                <div class="card" style="border-top: 4px solid var(--mision-rojo);">
+                    <div class="card-body">
+                        <i class="fa-solid fa-hands-praying icono-tarjeta" style="color: var(--mision-rojo);"></i>
+                        <h3>Lo Esencial</h3>
+                        <p>La fuente que no puede faltar, nuestro contacto con Dios: <strong>LA ORACIÓN</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CRONOGRAMA: FORMACIÓN Y CIERRE -->
+        <section class="seccion timeline-section">
+            <h2 class="titulo-seccion">El camino misionero</h2>
+
+            <div class="timeline-container">
+
+                <!-- Etapa 1: Formación -->
+                <div class="timeline-row">
+                    <div class="timeline-img-box">
+                        <img src="assets/img/pag_misiones/envio.webp" alt="Formación" class="circle-img">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>1. Nos preparamos (3 días)</h3>
+                        <p>Los jóvenes reciben las herramientas necesarias para ir de misión:</p>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 0.9rem; margin-top: 5px;">
+                            <li>Formación</li>
+                            <li>Herramientas prácticas para la misión</li>
+                            <li>Trabajo en equipo</li>
+                            <li><strong>Envío misionero</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Enviados a la misión, hora de actuar -->
+                <div class="timeline-row">
+                    <div class="timeline-img-box">
+                        <img src="assets/img/pag_misiones/jóvenes.webp" alt="Formación" class="circle-img">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>2. Somos enviados a la misión, ¡Hora de actuar!</h3>
+                        <p>Los jóvenes invitan a niños, niñas y adolescentes de las zonas de misión para realizar
+                            los encuentros navideños, estos encuentros incluyen:</p>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 0.9rem; margin-top: 5px;">
+                            <li>Villancicos</li>
+                            <li>Manualidades</li>
+                            <li>Dinámicas/Juegos</li>
+                            <li>Oración</li>
+                            <li>Refrigerio</li>
+                            <li>Y mucho más..</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Etapa 3: Festival -->
+                <div class="timeline-row">
+                    <div class="timeline-img-box">
+                        <img src="assets/img/pag_misiones/concurso.webp"
+                            alt="Presentación de Villancicos y Show de Payasitos" class="circle-img">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>3. Presentación de Villancicos y Show de Payasitos</h3>
+                        <p>2 a 3 días antes del 25 de diciembre, se realiza una actividad que reúne a todos los lugares
+                            de misión para la:</p>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 0.9rem; margin-top: 5px;">
+                            <li>Presentación de Villancicos</li>
+                            <li>Show de Payasitos (con el apoyo de la PUNA universitaria)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Etapa 4: Cierre -->
+                <div class="timeline-row">
+                    <div class="timeline-img-box">
+                        <img src="assets/img/pag_misiones/chocolatada.webp" alt="Cierre Navidad" class="circle-img">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>4. Cierre (24 de Diciembre)</h3>
+                        <p>El último encuentro con los niños en cada lugar de misión.</p>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 0.9rem; margin-top: 5px;">
+                            <li>Reparto de la <strong>Chocolatada</strong></li>
+                            <li>Celebración de la <strong>Misa de Gallo</strong> en el lugar de misión</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. UBICACIÓN: RED DE ZONAS (Diseño Interactivo) -->
+        <section class="seccion" style="background-color: #FAFAFA;">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">
+                    <h2 class="titulo-seccion">Nuestras Zonas de Misión</h2>
+                    <p class="subtitulo-seccion" style="margin-bottom: 20px;">
+                        Este año la misión se expande. Mira los lugares de misión en el mapa y participa.
+                    </p>
+                </div>
+
+                <div class="grid-zonas">
+
+                    <!-- Zona 1 -->
+                    <a href="https://maps.app.goo.gl/cH3nTMHqPdTx2uMn7" target="_blank" class="zona-card">
+                        <div class="zona-icon"><i class="fa-solid fa-church"></i></div>
+                        <div class="zona-info">
+                            <h3>Capilla Virgen de Urkupiña</h3>
+                            <span class="zona-link">Ver ubicación <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Zona 2 -->
+                    <a href="https://maps.app.goo.gl/S9eWSWDZMvyft4q76" target="_blank" class="zona-card">
+                        <div class="zona-icon"><i class="fa-solid fa-church"></i></div>
+                        <div class="zona-info">
+                            <h3>Capilla de Atipiris</h3>
+                            <span class="zona-link">Ver ubicación <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Zona 3 -->
+                    <a href="https://maps.app.goo.gl/Fb9o5hsXvZs67AzdA" target="_blank" class="zona-card">
+                        <div class="zona-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div class="zona-info">
+                            <h3>Sede de la zona Junthuma</h3>
+                            <span class="zona-link">Ver ubicación <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Zona 4 -->
+                    <a href="https://maps.app.goo.gl/y66RNbmzmbHHSPxT9" target="_blank" class="zona-card">
+                        <div class="zona-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div class="zona-info">
+                            <h3>Sede de la zona San José</h3>
+                            <span class="zona-link">Ver ubicación <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Capilla 1 -->
+                    <a href="https://maps.app.goo.gl/zrMhV2UHYwoENjXGA" target="_blank" class="zona-card">
+                        <div class="zona-icon"><i class="fa-solid fa-church"></i></div>
+                        <div class="zona-info">
+                            <h3>Capilla Natividad (Parroquia hermana Santa Clara)</h3>
+                            <span class="zona-link">Ver ubicación <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                    <!-- Capilla 2 -->
+                    <a href="https://maps.app.goo.gl/TKVHuPHAN9KWNYoRA" target="_blank" class="zona-card destacado">
+                        <div class="zona-icon"><i class="fa-solid fa-church"></i></div>
+                        <div class="zona-info">
+                            <h3>Capilla Centro (Z. 25 de Julio)</h3>
+                            <span class="zona-link">Ver ubicación <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. GALERÍA DE MOMENTOS (CARRUSEL) -->
+        <section class="seccion" style="background-color: #FAFAFA;">
+            <div class="container">
+                <h2 class="titulo-seccion">Momentos que nos marcan</h2>
+                <p class="subtitulo-seccion">Imágenes de las últimas misiones</p>
+
+                <!-- Contenedor Principal del Carrusel -->
+                <div class="carousel-container">
+
+                    <!-- Pista de Diapositivas -->
+                    <div class="carousel-track" id="track">
+
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active">
+                            <img src="assets/img/imag_misiones/demis1.webp" alt="Encuentros">
+                            <div class="carousel-caption">
+                                <h3>Encuentro con niños</h3>
+                                <p>Sede 27 de septiembre</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis2.webp" alt="Trabajo comunitario">
+                            <div class="carousel-caption">
+                                <h3>Trabajo comunitario</h3>
+                                <p>Plantación de árboles - Av. Versalles</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis3.webp" alt="Presentación de villancicos">
+                            <div class="carousel-caption">
+                                <h3>Presentación de villancicos</h3>
+                                <p>El talento de los niños - Capilla Virgen de Urkupiña</p>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis4.webp" alt="Presentación de villancicos">
+                            <div class="carousel-caption">
+                                <h3>Presentación de villancicos</h3>
+                                <p>Hora de cantar - Capilla Virgen de Urkupiña</p>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis5.webp" alt="Segundo_anio">
+                            <div class="carousel-caption">
+                                <h3>Teatro del nacimiento</h3>
+                                <p>Jóvenes de segundo año - Zona de Nueva Esperanza</p>
+                            </div>
+                        </div>
+                        <!-- Slide 6 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis6.webp" alt="Encuentros">
+                            <div class="carousel-caption">
+                                <h3>Encuentro con niños</h3>
+                                <p>Sede de San Jose</p>
+                            </div>
+                        </div>
+                        <!-- Slide 7 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis7.webp" alt="Encuentros">
+                            <div class="carousel-caption">
+                                <h3>Encuentro con niños</h3>
+                                <p>Capilla de Atipiris</p>
+                            </div>
+                        </div>
+                        <!-- Slide 8 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis8.webp" alt="Presentación de villancicos">
+                            <div class="carousel-caption">
+                                <h3>Show de payasitos</h3>
+                                <p>Todos participan - Capilla Virgen de Urkupiña</p>
+                            </div>
+                        </div>
+                        <!-- Slide 9 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demis9.webp" alt="Presentación de villancicos">
+                            <div class="carousel-caption">
+                                <h3>El esfuerzo de todos</h3>
+                                <p>El momento importa - Capilla Virgen de Urkupiña</p>
+                            </div>
+                        </div>
+                        <!-- Slide 10 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demisA.webp" alt="Navidad">
+                            <div class="carousel-caption">
+                                <h3>Misa de Navidad</h3>
+                                <p>Teatro de noche buena - Capilla Centro | 2023</p>
+                            </div>
+                        </div>
+                        <!-- Slide 11 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demisB.webp" alt="Navidad">
+                            <div class="carousel-caption">
+                                <h3>Coro de niños</h3>
+                                <p>Cantando al niño Jesús - Capilla Centro | Navidad 2023</p>
+                            </div>
+                        </div>
+                        <!-- Slide 12 -->
+                        <div class="carousel-slide">
+                            <img src="assets/img/imag_misiones/demisC.webp" alt="Navidad">
+                            <div class="carousel-caption">
+                                <h3>Teatro de noche buena</h3>
+                                <p>Navidad - Capilla Centro | 2023</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Botones de Navegación -->
+                    <button class="carousel-btn prev" id="btn-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="carousel-btn next" id="btn-next"><i class="fa-solid fa-chevron-right"></i></button>
+
+                    <!-- Indicadores (Puntitos) -->
+                    <div class="carousel-dots" id="dots-container">
+                        <span class="dot active" onclick="irASlide(0)"></span>
+                        <span class="dot" onclick="irASlide(1)"></span>
+                        <span class="dot" onclick="irASlide(2)"></span>
+                        <span class="dot" onclick="irASlide(3)"></span>
+                        <span class="dot" onclick="irASlide(4)"></span>
+                        <span class="dot" onclick="irASlide(5)"></span>
+                        <span class="dot" onclick="irASlide(6)"></span>
+                        <span class="dot" onclick="irASlide(7)"></span>
+                        <span class="dot" onclick="irASlide(8)"></span>
+                        <span class="dot" onclick="irASlide(9)"></span>
+                        <span class="dot" onclick="irASlide(10)"></span>
+                        <span class="dot" onclick="irASlide(11)"></span>
+                        <span class="dot" onclick="irASlide(12)"></span>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. INVITACIÓN FINAL -->
+        <div class="cta-whatsapp-section">
+            <div class="cta-content">
+                <h3 style="color: var(--mision-rojo); font-size: 2rem; margin-bottom: 15px;">Únete y participa</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                    Si estás cerca de algún lugar de misión, participa y envía a los niños/as que están en casa.
+                    <strong>¡Acompáñalos y tráelos para que participen de esta bella actividad!</strong>
+                </p>
+
+                <!-- Botón de Contacto (Único botón solicitado) -->
+                <a href="https://wa.me/59177518108" target="_blank" class="btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> CONTACTARSE
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- COLUMNA 1: IDENTIDAD -->
+                <div class="footer-col" style="text-align: center;">
+                    <h3>Parroquia San Francisco de Asís</h3>
+                    <p style="font-weight: bold; margin-bottom: 5px;">Diócesis de El Alto</p>
+                    <p style="margin-bottom: 15px; font-style: italic; opacity: 0.9;">"¡El que tiene una misión, ha de
+                        cumplirla!"</p>
+                </div>
+
+                <!-- COLUMNA 2: CONTACTO Y HORARIOS -->
+                <div class="footer-col" style="text-align: center;">
+                    <h3>Secretaría Parroquial</h3>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;">
+                            <i class="fa-solid fa-location-dot"
+                                style="color: var(--mision-dorado); margin-right: 8px;"></i>
+                            <span>Plaza 25 de Julio, El Alto - Senkata</span>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <i class="fa-solid fa-phone" style="color: var(--mision-dorado); margin-right: 8px;"></i>
+                            <span>+591 730011217</span>
+                        </li>
+                        <li style="margin-bottom: 5px; font-size: 0.9rem;">
+                            <i class="fa-regular fa-clock" style="color: var(--mision-dorado); margin-right: 8px;"></i>
+                            <span>Lun-Mie-Jue-Vie: 09:00 - 12:00 / 15:00 - 18:00</span>
+                        </li>
+                        <li style="margin-bottom: 5px; font-size: 0.9rem;">
+                            <i class="fa-regular fa-clock" style="color: var(--mision-dorado); margin-right: 8px;"></i>
+                            <span>Sábado: 09:00 - 12:00 / 15:00 - 18:00</span>
+                        </li>
+                        <li style="font-size: 0.9rem; color: #ffcccc;">
+                            <i class="fa-solid fa-store-slash" style="margin-right: 8px;"></i>
+                            <span>Martes y Domingo: CERRADO</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- COLUMNA 3: REDES Y ACCIÓN -->
+                <div class="footer-col" style="text-align: center;">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons" style="justify-content: center; margin-bottom: 15px;">
+                        <a href="https://www.facebook.com/PSanFranciscoDeAsisElAlto70v7" target="_blank"
+                            class="social-btn" title="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@p.sanfrancisco" target="_blank" class="social-btn"
+                            title="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                    <p style="font-size: 0.9rem;">Visita nuestras redes para estar enterado de todo lo que pasa en la
+                        parroquia.</p>
+                </div>
+
+            </div>
+
+            <!-- BARRA FINAL DE COPYRIGHT -->
+            <div class="footer-bottom" style="text-align: center;">
+                <p>&copy; 2025 Parroquia San Francisco de Asís. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Página Misiones Independiente Cargada.");
+            iniciarCarrusel();
+        });
+
+        /* -----------------------------------------------------
+           FUNCIÓN: CARRUSEL DE IMÁGENES (Slider)
+           ----------------------------------------------------- */
+        function iniciarCarrusel() {
+            // Buscamos el elemento "track" que contiene las imágenes
+            const track = document.getElementById('track');
+
+            // IMPORTANTE: Si no estamos en la página de Misiones, 'track' será null.
+            if (!track) return;
+
+            // Seleccionamos los elementos necesarios
+            const slides = Array.from(track.children);
+            const nextButton = document.getElementById('btn-next');
+            const prevButton = document.getElementById('btn-prev');
+            const dotsContainer = document.getElementById('dots-container');
+            const dots = Array.from(dotsContainer.children);
+
+            let currentIndex = 0; // Empezamos en la primera imagen (índice 0)
+
+            // --- Función Principal: Cambiar de Diapositiva ---
+            const updateCarousel = (newIndex) => {
+                // 1. Quitar la clase 'active' de la diapositiva y punto actual
+                slides[currentIndex].classList.remove('active');
+                dots[currentIndex].classList.remove('active');
+
+                // 2. Actualizar el índice actual al nuevo
+                currentIndex = newIndex;
+
+                // 3. Añadir la clase 'active' a la nueva diapositiva y punto
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+            };
+
+            // --- Evento: Botón Siguiente ---
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    // Usamos el módulo (%) para volver al 0 cuando llegamos al final
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel(nextIndex);
+                    resetAutoPlay(); // Reiniciar el temporizador
+                });
+            }
+
+            // --- Evento: Botón Anterior ---
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    // Lógica para ir al último si estamos en el primero
+                    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    updateCarousel(prevIndex);
+                    resetAutoPlay();
+                });
+            }
+
+            // --- Evento: Clic en los Puntos ---
+            dots.forEach((dot, index) => {
+                // Limpiamos onclicks antiguos si los hubiera en el HTML
+                dot.removeAttribute('onclick');
+
+                dot.addEventListener('click', () => {
+                    updateCarousel(index);
+                    resetAutoPlay();
+                });
+            });
+
+            // --- Auto-Play (Automático) ---
+            let autoPlayInterval;
+
+            const startAutoPlay = () => {
+                autoPlayInterval = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel(nextIndex);
+                }, 3000); // Cambia cada 3000ms (3 segundos)
+            };
+
+            const resetAutoPlay = () => {
+                clearInterval(autoPlayInterval); // Detener
+                startAutoPlay(); // Volver a empezar
+            };
+
+            // Iniciar el movimiento automático
+            startAutoPlay();
+
+            // Detener si el usuario pasa el mouse por encima (para leer tranquilo)
+            const container = document.querySelector('.carousel-container');
+            if (container) {
+                container.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                container.addEventListener('mouseleave', startAutoPlay);
+            }
+        }
+
+        // Helper para los onClicks del HTML original (si quedaron)
+        function irASlide(index) {
+            // Esta función se llama desde el HTML onclick="irASlide(x)"
+            // Pero nuestro script ya maneja los eventos click en los dots.
+            // Sin embargo, si el HTML tiene onclick, necesitamos que funcione o quitarlo.
+            // En el código de arriba, "dots.forEach" remueve el atributo onclick.
+            // Así que esta función no debería ser necesaria si el script corre después del HTML.
+            // Pero por seguridad, podemos dejarla o confiar en el removeAttribute.
+        }
+    </script>
+
+</body>
+
+</html>
